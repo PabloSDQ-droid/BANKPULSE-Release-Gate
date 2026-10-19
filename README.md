@@ -1,5 +1,20 @@
 # BankPulse Platform Engineering Lab
 
+## Deber 1: Release Gate de negocio
+
+La implementacion y la evidencia del falso verde se encuentran en [docs/deber-01.md](docs/deber-01.md).
+El pipeline separa Build/Unit Tests, Docker, disponibilidad tecnica y una prueba de negocio que exige
+dos solicitudes del mismo pago → un registro en MariaDB por USD 500 → un evento de auditoria.
+Un resultado BLOCK termina CI con error. Para impedir el merge debe exigirse el check **Release Gate** en `main`.
+
+```bash
+python3 scripts/technical_smoke.py
+python3 scripts/business_gate.py
+```
+
+Los reportes se guardan en `evidence/` y como artifacts de GitHub Actions, tambien cuando falla el negocio.
+`scripts/smoke.sh` sigue disponible como comprobacion integral del laboratorio original.
+
 Laboratorio hiperrealista de microservicios para practicar persistencia políglota, contenedores, resiliencia y entrega continua. No es una simulación: el panel consume dos APIs Spring Boot, los pagos se guardan en MariaDB y los eventos de auditoría en MongoDB.
 
 ## Arquitectura
