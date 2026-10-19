@@ -23,7 +23,7 @@ public class PaymentService {
 
     @Transactional
     public Payment create(String idempotencyKey, PaymentController.PaymentRequest request) {
-        return payments.findByIdempotencyKey(idempotencyKey).orElseGet(() -> persist(idempotencyKey, request));
+        return persist(UUID.randomUUID().toString(), request); // FALSO VERDE: pierde la clave original
     }
 
     private Payment persist(String idempotencyKey, PaymentController.PaymentRequest request) {
