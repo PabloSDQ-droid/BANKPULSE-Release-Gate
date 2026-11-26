@@ -56,3 +56,18 @@ No use `docker compose down -v` si desea conservar los datos. Consulte [Misiones
 3. Para publicar imágenes en Docker Hub, configure los secretos `DOCKERHUB_USERNAME` y `DOCKERHUB_TOKEN` y ejecute manualmente **Publish Docker Hub images**.
 
 Nunca suba el archivo `.env`, contraseñas reales ni tokens al repositorio.
+
+## Decisiones de arquitectura — ADR Tools
+
+La justificación de las decisiones está en el [índice ADR](docs/adr/README.md).
+Consulte la [investigación, implementación y evidencias del deber](docs/DEBER-ADR.md).
+
+```bash
+bash scripts/install-adr-tools.sh
+bash scripts/adr.sh list
+bash scripts/check-adrs.sh
+```
+
+El Release Gate valida los ADR antes de compilar. En los PRs, los cambios en
+las rutas de arquitectura definidas por el validador requieren añadir o actualizar
+un ADR numerado. La revisión humana evalúa su justificación.
