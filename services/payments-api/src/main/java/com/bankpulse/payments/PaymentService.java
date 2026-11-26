@@ -23,7 +23,8 @@ public class PaymentService {
 
     @Transactional
     public Payment create(String idempotencyKey, PaymentController.PaymentRequest request) {
-        return payments.findByIdempotencyKey(idempotencyKey).orElseGet(() -> persist(idempotencyKey, request));
+        return payments.findByIdempotencyKey(idempotencyKey)
+                .orElseGet(() -> persist(idempotencyKey, request));
     }
 
     private Payment persist(String idempotencyKey, PaymentController.PaymentRequest request) {

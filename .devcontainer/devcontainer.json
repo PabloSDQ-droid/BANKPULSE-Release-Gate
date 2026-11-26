@@ -1,6 +1,8 @@
 {
   "name": "BankPulse Platform Engineering Lab",
-  "image": "mcr.microsoft.com/devcontainers/java:1-21-bookworm",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
       "version": "latest",
